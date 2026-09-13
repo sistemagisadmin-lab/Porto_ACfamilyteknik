@@ -24,10 +24,28 @@ import Header from '../components/Header.astro';
       <Header />
     </div>
 
-    <!-- Content Workspace Area -->
-    <div class="flex-grow w-full max-w-[1440px] mx-auto px-6 sm:px-10 lg:px-16 relative z-10 flex items-center">
-      <!-- Area konten selanjutnya -->
-    </div>
+    <!-- Main Hero Body Area (Vertically Centered) -->
+    <main class="flex-grow w-full max-w-[1440px] mx-auto px-6 sm:px-10 lg:px-16 relative z-10 flex items-center py-10 lg:py-16">
+      <div class="w-full grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+        
+        <!-- Left Column: Big Headline -->
+        <div class="lg:col-span-7 space-y-6 text-left">
+          <h1 class="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-black uppercase tracking-tight text-white leading-[1.08] drop-shadow-sm font-sans max-w-2xl">
+            Cepat Datang,<br />
+            Dingin Kembali
+          </h1>
+        </div>
+
+        <!-- Right Column: Space for Hero Product/Showcase (Ready for next step) -->
+        <div class="lg:col-span-5 relative flex items-center justify-center">
+          <!-- Area visual di kanan -->
+        </div>
+
+      </div>
+    </main>
+
+    <!-- Bottom Margin / Footer Spacer -->
+    <div class="relative z-10 h-8"></div>
 
   </div>
 </Layout>
