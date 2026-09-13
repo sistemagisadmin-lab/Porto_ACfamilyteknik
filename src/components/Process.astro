@@ -1,0 +1,67 @@
+---
+const steps = [
+  {
+    step: "01",
+    title: "Konsultasi & Penjadwalan",
+    desc: "Hubungi tim kami via WhatsApp atau formulir. Tentukan waktu kedatangan teknisi yang paling cocok untuk Anda."
+  },
+  {
+    step: "02",
+    title: "Inspeksi & Diagnosa Akurat",
+    desc: "Teknisi tiba tepat waktu dan melakukan uji komprehensif pada tekanan, suhu, arus listrik, serta kebersihan unit."
+  },
+  {
+    step: "03",
+    title: "Pengerjaan Sesuai Standar SOP",
+    desc: "Proses pembersihan/perbaikan dilakukan dengan peralatan profesional, rapi, dan menjaga kebersihan ruangan Anda."
+  },
+  {
+    step: "04",
+    title: "Uji Fungsi & Aktivasi Garansi",
+    desc: "Pengujian suhu dingin optimal bersama Anda. Anda mendapatkan kartu garansi resmi dan nota digital transparan."
+  }
+];
+---
+
+<section id="alur" class="py-20 md:py-32 relative">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    
+    <div class="text-center max-w-3xl mx-auto mb-16 space-y-4">
+      <h2 class="text-xs uppercase tracking-widest font-bold text-cyan-400">Proses Kerja Transparan</h2>
+      <p class="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-white tracking-tight">
+        4 Langkah Mudah Menikmati Udara Sejuk
+      </p>
+      <p class="text-slate-400 text-base">
+        Pengalaman layanan yang cepat, tanpa ribet, dan memberikan rasa tenang untuk setiap konsumen.
+      </p>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+      {steps.map((item) => (
+        <div class="relative glass-panel p-6 rounded-2xl border-slate-800 flex flex-col justify-between group hover:border-cyan-500/40 transition-all duration-300">
+          <div>
+            <div class="flex items-center justify-between mb-6">
+              <span class="text-3xl font-black text-slate-700 group-hover:text-cyan-400 transition-colors duration-300">
+                {item.step}
+              </span>
+              <div class="w-8 h-8 rounded-full bg-cyan-500/10 flex items-center justify-center text-cyan-400">
+                <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" />
+                </svg>
+              </div>
+            </div>
+
+            <h3 class="text-lg font-bold text-white mb-2 group-hover:text-cyan-200 transition-colors">
+              {item.title}
+            </h3>
+
+            <p class="text-xs sm:text-sm text-slate-400 leading-relaxed">
+              {item.desc}
+            </p>
+          </div>
+        </div>
+      ))}
+    </div>
+
+  </div>
+</section>

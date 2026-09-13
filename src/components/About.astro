@@ -1,0 +1,92 @@
+---
+const advantages = [
+  {
+    title: "Teknisi Bersertifikasi Resmi",
+    desc: "Setiap teknisi kami telah melewati uji kompetensi standar industri dan dibekali SOP kerja ketat serta perlindungan keselamatan.",
+    badge: "BNSP Certified"
+  },
+  {
+    title: "Transparansi Biaya",
+    desc: "Estimasi biaya jelas di awal sebelum pengerjaan. Tidak ada biaya siluman atau penggantian komponen tanpa persetujuan Anda.",
+    badge: "Jujur & Terpercaya"
+  },
+  {
+    title: "Peralatan Diagnostik Modern",
+    desc: "Menggunakan Digital Manifold Gauge, Thermal Scanner, dan vacuum pump 2-stage untuk hasil instalasi & perbaikan yang presisi.",
+    badge: "High Tech Tools"
+  },
+  {
+    title: "Garansi Pekerjaan Nyata",
+    desc: "Kami memberikan garansi tertulis untuk setiap perbaikan, pengisian freon, hingga instalasi unit baru dengan klaim tanpa ribet.",
+    badge: "Garansi s.d 90 Hari"
+  }
+];
+
+const brands = ["Daikin", "Panasonic", "Mitsubishi Electric", "Gree", "LG", "Sharp", "Samsung", "Midea"];
+---
+
+<section id="tentang" class="py-20 md:py-32 relative bg-slate-900/40 border-y border-slate-800/60">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+      
+      <!-- Left Column: Story & Highlights -->
+      <div class="lg:col-span-6 space-y-6">
+        <div class="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-cyan-500/10 border border-cyan-500/20 text-cyan-400 text-xs font-semibold">
+          Tentang AC-COMPRO
+        </div>
+
+        <h2 class="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-white tracking-tight leading-tight">
+          Komitmen Kami untuk Udara Bersih & Kenyamanan Tanpa Kompromi
+        </h2>
+
+        <p class="text-slate-300 text-base leading-relaxed">
+          AC-COMPRO hadir sebagai mitra tata udara dan HVAC terkemuka yang melayani ribuan residensial, perkantoran, dan sektor komersial. Kami memahami bahwa udara yang sejuk dan higienis adalah investasi kesehatan dan kenyamanan ruang Anda.
+        </p>
+
+        <p class="text-slate-400 text-sm leading-relaxed">
+          Dengan dukungan tim teknisi berlisensi dan armada operasional terpadu, kami memastikan respon cepat di seluruh wilayah operasional dengan standar kepuasan tertinggi.
+        </p>
+
+        <!-- Brand Compatibility Strip -->
+        <div class="pt-4">
+          <p class="text-xs uppercase tracking-wider font-semibold text-slate-400 mb-3">Mendukung Seluruh Brand Ternama:</p>
+          <div class="flex flex-wrap gap-2">
+            {brands.map((brand) => (
+              <span class="px-3 py-1.5 rounded-lg bg-slate-800/80 border border-slate-700/60 text-xs font-medium text-slate-300">
+                {brand}
+              </span>
+            ))}
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Right Column: Advantage Grid -->
+      <div class="lg:col-span-6">
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+          {advantages.map((item, idx) => (
+            <div class="glass-panel p-6 rounded-2xl border-slate-800 hover:border-cyan-500/30 transition-all duration-300 group">
+              <div class="flex items-center justify-between mb-4">
+                <span class="w-8 h-8 rounded-lg bg-cyan-500/10 text-cyan-400 flex items-center justify-center font-bold text-sm">
+                  0{idx + 1}
+                </span>
+                <span class="text-[10px] font-semibold uppercase tracking-wider text-cyan-300/80 bg-cyan-950/60 px-2 py-0.5 rounded border border-cyan-800/40">
+                  {item.badge}
+                </span>
+              </div>
+              <h3 class="text-base font-bold text-white group-hover:text-cyan-300 transition-colors duration-200 mb-2">
+                {item.title}
+              </h3>
+              <p class="text-xs sm:text-sm text-slate-400 leading-relaxed">
+                {item.desc}
+              </p>
+            </div>
+          ))}
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+</section>

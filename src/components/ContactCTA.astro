@@ -1,0 +1,91 @@
+---
+const contactMethods = [
+  {
+    title: "Hotline 24/7 & WhatsApp",
+    desc: "Respon instan dalam hitungan menit untuk darurat atau booking",
+    action: "+62 812-3456-7890",
+    link: "https://wa.me/6281234567890",
+    badge: "Fast Response"
+  },
+  {
+    title: "Email Dukungan & B2B",
+    desc: "Kirim dokumen tender, RAB, atau kontrak pemeliharaan gedung",
+    action: "support@ac-compro.com",
+    link: "mailto:support@ac-compro.com",
+    badge: "Official Inquiries"
+  },
+  {
+    title: "Wilayah Operasional",
+    desc: "Melayani seluruh area Jabodetabek & sekitarnya dengan 8 titik armada",
+    action: "Cek Titik Armada Terdekat",
+    link: "#",
+    badge: "8 Cabang"
+  }
+];
+---
+
+<section id="kontak" class="py-20 md:py-32 relative">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    
+    <!-- CTA Hero Banner Card -->
+    <div class="relative rounded-3xl overflow-hidden glass-panel border border-cyan-500/30 p-8 sm:p-12 lg:p-16 shadow-2xl">
+      <div class="absolute inset-0 bg-gradient-to-r from-cyan-900/30 via-slate-900/50 to-blue-900/30 pointer-events-none"></div>
+      
+      <div class="relative z-10 grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
+        
+        <div class="lg:col-span-8 space-y-4 text-center lg:text-left">
+          <span class="px-3.5 py-1 rounded-full bg-cyan-400/10 border border-cyan-400/30 text-cyan-300 text-xs font-semibold uppercase tracking-wider">
+            Siap Melayani Anda
+          </span>
+          <h2 class="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-white tracking-tight leading-tight">
+            Ruangan Anda Mulai Gerah atau AC Bermasalah?
+          </h2>
+          <p class="text-slate-300 text-base sm:text-lg max-w-2xl">
+            Jangan tunggu hingga unit rusak parah. Konsultasikan keluhan AC Anda dengan teknisi ahli kami sekarang dan nikmati diskon khusus kunjungan pertama!
+          </p>
+        </div>
+
+        <div class="lg:col-span-4 flex flex-col items-center lg:items-end justify-center gap-4">
+          <a
+            href="https://wa.me/6281234567890?text=Halo%20AC-COMPRO,%20saya%20ingin%20jadwalkan%20servis%20AC"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="w-full sm:w-auto inline-flex items-center justify-center gap-3 px-8 py-4 rounded-xl text-base font-bold text-slate-950 bg-gradient-to-r from-cyan-400 to-sky-400 hover:from-cyan-300 hover:to-sky-300 shadow-xl shadow-cyan-500/30 transition-all duration-300 transform hover:-translate-y-1"
+          >
+            <svg class="w-5 h-5 fill-current" viewBox="0 0 24 24">
+              <path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.711 2.598 2.669-.699c.969.539 1.782.78 2.791.782h.005c3.181 0 5.767-2.586 5.768-5.766 0-3.18-2.586-5.768-5.774-5.768zm3.366 8.163c-.144.405-.837.774-1.17.823-.312.045-.698.077-2.203-.547-1.784-.738-2.92-2.551-3.009-2.67-.09-.119-.714-.951-.714-1.815 0-.864.448-1.289.608-1.468.16-.179.351-.224.468-.224.118 0 .235.002.337.007.108.005.253-.041.396.302.147.351.503 1.228.547 1.318.045.09.075.195.015.314-.06.12-.09.195-.179.3-.09.105-.189.234-.27.315-.09.09-.184.188-.079.368.105.18.468.772 1.004 1.249.69.614 1.272.805 1.452.895.18.09.285.075.39-.045.105-.12.45-.524.57-.704.12-.18.24-.15.405-.09.165.06 1.047.494 1.227.584.18.09.3.135.345.21.045.075.045.435-.099.84z"/>
+            </svg>
+            Hubungi via WhatsApp
+          </a>
+          <span class="text-xs text-slate-400 font-medium">Bebas Biaya Konsultasi & Diagnosa Awal</span>
+        </div>
+
+      </div>
+
+    </div>
+
+    <!-- Contact Quick Cards -->
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mt-10">
+      {contactMethods.map((method) => (
+        <a
+          href={method.link}
+          class="glass-panel p-6 rounded-2xl border-slate-800/80 hover:border-cyan-500/40 transition-all duration-300 block group"
+        >
+          <div class="flex items-center justify-between mb-3">
+            <h3 class="text-base font-bold text-white group-hover:text-cyan-400 transition-colors">
+              {method.title}
+            </h3>
+            <span class="text-[10px] font-semibold text-cyan-300 bg-cyan-950/80 border border-cyan-800/40 px-2 py-0.5 rounded">
+              {method.badge}
+            </span>
+          </div>
+          <p class="text-xs text-slate-400 mb-4">{method.desc}</p>
+          <p class="text-sm font-semibold text-cyan-400 group-hover:text-cyan-300 flex items-center gap-1">
+            {method.action} &rarr;
+          </p>
+        </a>
+      ))}
+    </div>
+
+  </div>
+</section>
