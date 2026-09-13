@@ -1,0 +1,114 @@
+---
+interface Props {
+  brandName?: string;
+}
+
+const { brandName = "FAMILY TEKNIK" } = Astro.props;
+
+const navLinks = [
+  { name: "ABOUT US", href: "#about" },
+  { name: "FIND US", href: "#find-us" },
+  { name: "ALL CAMPAIGNS", href: "#campaigns" },
+];
+---
+
+<!-- Top Header Component in #1e2dfc Blue Theme -->
+<header class="w-full relative z-20 px-6 sm:px-10 lg:px-14 pt-7 pb-4">
+  <div class="flex items-center justify-between">
+    
+    <!-- Left: Bold Italic Brand Logo (KFC Style aesthetic) -->
+    <a href="/" class="flex items-center gap-1 group select-none">
+      <span class="text-3xl sm:text-4xl font-black italic tracking-tighter text-white font-sans drop-shadow-sm uppercase">
+        AC<span class="text-white">FAMILY</span>
+      </span>
+      <span class="text-[10px] font-bold text-white/70 align-top -mt-3">®</span>
+    </a>
+
+    <!-- Right Side Group: Menu Links + Action Buttons -->
+    <div class="flex items-center gap-6 md:gap-10 lg:gap-12">
+      
+      <!-- Navigation Links (Uppercase, clean tracking) -->
+      <nav class="hidden md:flex items-center gap-8 lg:gap-10">
+        {navLinks.map((link) => (
+          <a
+            href={link.href}
+            class="text-[12px] lg:text-[13px] font-extrabold uppercase tracking-widest text-white/90 hover:text-white hover:opacity-100 transition-opacity duration-200"
+          >
+            {link.name}
+          </a>
+        ))}
+      </nav>
+
+      <!-- Circular Action Icons -->
+      <div class="flex items-center gap-3.5">
+        
+        <!-- Profile Button (White Circle) -->
+        <button
+          type="button"
+          aria-label="User Profile"
+          class="w-10 h-10 sm:w-11 sm:h-11 rounded-full bg-white text-[#1e2dfc] flex items-center justify-center shadow-lg shadow-black/10 hover:scale-105 active:scale-95 transition-all duration-200"
+        >
+          <!-- User Profile Icon -->
+          <svg class="w-5 h-5 text-[#1e2dfc]" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.2">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
+          </svg>
+        </button>
+
+        <!-- Shopping Basket / Booking Button (White Circle with Badge) -->
+        <button
+          type="button"
+          aria-label="Cart / Inquiry"
+          class="w-10 h-10 sm:w-11 sm:h-11 rounded-full bg-white text-[#1e2dfc] flex items-center justify-center shadow-lg shadow-black/10 hover:scale-105 active:scale-95 transition-all duration-200 relative"
+        >
+          <!-- Shopping Basket / Bag Icon -->
+          <svg class="w-5 h-5 text-[#1e2dfc]" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.2">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z" />
+          </svg>
+          
+          <!-- Badge Count (1) at top-right edge -->
+          <span class="absolute -top-1 -right-1 w-4 h-4 sm:w-4.5 sm:h-4.5 rounded-full bg-slate-900 text-white text-[10px] font-black flex items-center justify-center border-2 border-white shadow-sm">
+            1
+          </span>
+        </button>
+
+        <!-- Mobile Menu Toggle (Only on small screens) -->
+        <button
+          id="mobile-nav-toggle"
+          type="button"
+          class="md:hidden w-10 h-10 rounded-full bg-white/15 text-white flex items-center justify-center hover:bg-white/25 transition-colors focus:outline-none"
+          aria-label="Toggle Menu"
+        >
+          <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16" />
+          </svg>
+        </button>
+
+      </div>
+
+    </div>
+
+  </div>
+
+  <!-- Mobile Dropdown Navigation -->
+  <div id="mobile-nav-menu" class="hidden md:hidden mt-4 pt-4 border-t border-white/15 space-y-3">
+    {navLinks.map((link) => (
+      <a
+        href={link.href}
+        class="block text-sm font-bold uppercase tracking-wider text-white hover:text-white/80 py-1"
+      >
+        {link.name}
+      </a>
+    ))}
+  </div>
+</header>
+
+<script>
+  const toggleBtn = document.getElementById('mobile-nav-toggle');
+  const navMenu = document.getElementById('mobile-nav-menu');
+
+  if (toggleBtn && navMenu) {
+    toggleBtn.addEventListener('click', () => {
+      navMenu.classList.toggle('hidden');
+    });
+  }
+</script>
