@@ -1,0 +1,339 @@
+---
+const cleaningPrices = [
+  {
+    name: "AC Split 1 PK",
+    type: "Residential / Kamar & Ruang Tamu",
+    price: "100.000",
+    features: [
+      "Cleaning Unit Indoor & Filter",
+      "Cleaning Unit Outdoor & Kondensor",
+      "Pembersihan Saluran Drainase",
+      "Pengecekan Tekanan & Arus Listrik",
+      "Garansi Kebersihan & Bebas Bau"
+    ],
+    popular: true,
+    badge: "Paling Laris"
+  },
+  {
+    name: "AC Split 1,5 PK",
+    type: "Ruang Keluarga & Kantor Medium",
+    price: "150.000",
+    features: [
+      "Cleaning Unit Indoor & Blower",
+      "Cleaning Unit Outdoor Berkala",
+      "Pembersihan Saluran Pembuangan",
+      "Pengecekan Kebocoran & Suhu",
+      "Garansi Kerja Profesional"
+    ],
+    popular: false,
+    badge: "Rekomendasi"
+  },
+  {
+    name: "AC Split 2 PK",
+    type: "Ruang Luas & Commercial Unit",
+    price: "200.000",
+    features: [
+      "Deep Steam Cleaning Indoor",
+      "Pembersihan Outdoor Bertekanan",
+      "Pengecekan Arus Kompresor",
+      "Pengecekan Tekanan Freon",
+      "Garansi Pengerjaan Rapi"
+    ],
+    popular: false,
+    badge: "Heavy Duty"
+  },
+  {
+    name: "AC Cassette / Standing 3 PK",
+    type: "Plafon Kantor, Ruko & Restoran",
+    price: "350.000",
+    features: [
+      "Cleaning Khusus Unit Cassette/Standing",
+      "Pembersihan Filter & Grill Plafon",
+      "Pembersihan Saluran Pompa Drain",
+      "Pemeriksaan Kelistrikan & Sensor",
+      "SOP Komersial Berstandar"
+    ],
+    popular: false,
+    badge: "Unit Komersial"
+  },
+  {
+    name: "AC Cassette / Standing 5 PK",
+    type: "Gedung, Aula & Industri",
+    price: "500.000",
+    features: [
+      "Deep Cleaning Full Unit 5 PK",
+      "Cleaning Outdoor Fan Ganda",
+      "Pemeriksaan Motor & Modul PCB",
+      "Pengujian Sirkulasi Udara Optimal",
+      "Laporan Hasil Pengerjaan Resmi"
+    ],
+    popular: false,
+    badge: "Kapasitas Besar"
+  }
+];
+
+const servicePackages = [
+  {
+    id: "bp-1pk",
+    name: "Bongkar Pasang AC (1/2 PK - 1 PK)",
+    subtitle: "Sudah Termasuk Jasa Vakum Sistem",
+    price: "600.000",
+    desc: "Layanan bongkar pasang unit split lama/baru dengan prosedur evakuasi udara (vakum pipa) agar pipa bebas uap air dan dingin maksimal.",
+    iconType: "wrench"
+  },
+  {
+    id: "bp-2pk",
+    name: "Bongkar Pasang AC (1.5 PK - 2 PK)",
+    subtitle: "Sudah Termasuk Jasa Vakum Sistem",
+    price: "750.000",
+    desc: "Instalasi dan relokasi unit berkapasitas besar dengan penanganan pipa presisi dan pengetesan manifold menyeluruh.",
+    iconType: "cog"
+  },
+  {
+    id: "oh-1pk",
+    name: "Overhaul AC (1/2 PK - 1 PK)",
+    subtitle: "Sudah Termasuk Jasa Vakum Sistem",
+    price: "550.000",
+    desc: "Turun unit total untuk pembersihan kerak membandel, lendir evaporator, karat talang air, dan perakitan kembali dengan standar baru.",
+    iconType: "sparkle"
+  },
+  {
+    id: "oh-2pk",
+    name: "Overhaul AC (1.5 PK - 2 PK)",
+    subtitle: "Sudah Termasuk Jasa Vakum Sistem",
+    price: "750.000",
+    desc: "Pembersihan total bongkar turun unit untuk AC 1.5 - 2 PK yang tersumbat parah, bau menahun, atau performa kompresor menurun.",
+    iconType: "snowflake"
+  }
+];
+---
+
+<!-- Price List Section Family Teknik -->
+<section id="pricelist" class="w-full bg-slate-50 py-12 sm:py-18 md:py-24 relative z-10 border-b border-slate-200">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    
+    <!-- Section Header (Removed 'Daftar Tarif Resmi' Badge) -->
+    <div class="text-center max-w-3xl mx-auto mb-8 sm:mb-12 md:mb-14 space-y-2.5 sm:space-y-3">
+      <h2 class="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-black uppercase tracking-tight text-slate-900 leading-tight">
+        Harga Layanan Cuci & Service AC
+      </h2>
+      <p class="text-slate-600 text-xs sm:text-sm md:text-base leading-relaxed max-w-xl mx-auto">
+        Harga transparan tanpa biaya tersembunyi. Ditangani langsung oleh teknisi berpengalaman dan bergaransi resmi.
+      </p>
+    </div>
+
+    <!-- Category Tabs Switcher with Pure SVG Icons (Responsive Wrap on Mobile) -->
+    <div class="flex items-center justify-center mb-8 sm:mb-10">
+      <div class="inline-flex flex-col sm:flex-row p-1.5 rounded-2xl bg-slate-200/80 border border-slate-300 gap-1.5 sm:gap-2 w-full sm:w-auto max-w-sm sm:max-w-none">
+        
+        <!-- Tab Cuci -->
+        <button
+          type="button"
+          id="tab-cuci-btn"
+          class="price-tab-btn inline-flex items-center justify-center gap-2 px-5 sm:px-8 py-2.5 sm:py-3 rounded-xl font-black text-xs sm:text-sm uppercase tracking-wider transition-all duration-200 bg-[#1e2dfc] text-white shadow-md text-center"
+        >
+          <!-- Droplets / Cleaning SVG Icon -->
+          <svg class="w-4 h-4 text-current shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.3">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z" />
+          </svg>
+          <span>Cuci / Cleaning AC</span>
+        </button>
+
+        <!-- Tab Bongkar Pasang -->
+        <button
+          type="button"
+          id="tab-jasa-btn"
+          class="price-tab-btn inline-flex items-center justify-center gap-2 px-5 sm:px-8 py-2.5 sm:py-3 rounded-xl font-black text-xs sm:text-sm uppercase tracking-wider transition-all duration-200 text-slate-700 hover:text-slate-900 text-center"
+        >
+          <!-- Wrench / Tools SVG Icon -->
+          <svg class="w-4 h-4 text-current shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.3">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z" />
+            <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+          </svg>
+          <span>Bongkar Pasang & Overhaul</span>
+        </button>
+
+      </div>
+    </div>
+
+    <!-- Section 1: Cuci / Cleaning AC Cards Grid -->
+    <div id="cuci-view" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 sm:gap-6 md:gap-8">
+      {cleaningPrices.map((item) => (
+        <div class={`bg-white rounded-2xl sm:rounded-3xl p-5 sm:p-7 md:p-8 flex flex-col justify-between relative shadow-lg hover:shadow-2xl hover:-translate-y-1.5 transition-all duration-300 border ${item.popular ? 'border-[#1e2dfc] ring-2 ring-[#1e2dfc]/20' : 'border-slate-200'}`}>
+          
+          <div>
+            <!-- Top Tag & Name -->
+            <div class="flex items-center justify-between mb-3 sm:mb-4">
+              <span class={`text-[9px] sm:text-[10px] font-black uppercase tracking-wider px-2.5 sm:px-3 py-1 rounded-full ${item.popular ? 'bg-[#1e2dfc] text-white' : 'bg-slate-100 text-slate-700'}`}>
+                {item.badge}
+              </span>
+              <span class="text-[11px] sm:text-xs font-bold text-slate-400">Indoor & Outdoor</span>
+            </div>
+
+            <h3 class="text-lg sm:text-xl font-black uppercase tracking-tight text-slate-900 mb-1">
+              {item.name}
+            </h3>
+            <p class="text-xs font-semibold text-slate-500 mb-4 sm:mb-6">
+              {item.type}
+            </p>
+
+            <!-- Price Display -->
+            <div class="py-3 sm:py-4 px-4 sm:px-5 rounded-2xl bg-slate-50 border border-slate-200 mb-4 sm:mb-6">
+              <span class="text-[11px] sm:text-xs font-bold text-slate-500 block -mb-0.5">Biaya Layanan:</span>
+              <div class="flex items-baseline gap-1">
+                <span class="text-xs font-bold text-slate-600">Rp</span>
+                <span class="text-2xl sm:text-3xl md:text-4xl font-black text-[#1e2dfc] tracking-tight">{item.price}</span>
+                <span class="text-[11px] sm:text-xs font-bold text-slate-500">/ unit</span>
+              </div>
+            </div>
+
+            <!-- Features Checklist -->
+            <ul class="space-y-2 sm:space-y-2.5 text-xs sm:text-sm text-slate-600 mb-5 sm:mb-6">
+              {item.features.map((feat) => (
+                <li class="flex items-start gap-2.5">
+                  <svg class="w-4 h-4 text-emerald-600 shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" />
+                  </svg>
+                  <span>{feat}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          <!-- Action Button -->
+          <div class="pt-4 border-t border-slate-100">
+            <a
+              href={`https://wa.me/6288219639143?text=Halo%20PT%20Family%20Teknik%20Paimin%20Groups,%20saya%20ingin%20booking%20layanan%20${encodeURIComponent(item.name)}`}
+              target="_blank"
+              rel="noopener noreferrer"
+              class={`w-full py-2.5 sm:py-3 px-4 rounded-xl font-extrabold text-xs sm:text-sm uppercase tracking-wider flex items-center justify-center gap-2 transition-all duration-200 ${item.popular ? 'bg-[#1e2dfc] hover:bg-[#1622c8] text-white shadow-md shadow-blue-500/30' : 'bg-slate-100 hover:bg-[#1e2dfc] hover:text-white text-slate-800'}`}
+            >
+              Pesan Teknisi Sekarang
+            </a>
+          </div>
+
+        </div>
+      ))}
+    </div>
+
+    <!-- Section 2: Bongkar Pasang & Overhaul Grid -->
+    <div id="jasa-view" class="hidden grid grid-cols-1 md:grid-cols-2 gap-5 sm:gap-6 md:gap-8">
+      {servicePackages.map((item) => (
+        <div class="bg-white rounded-2xl sm:rounded-3xl p-5 sm:p-7 md:p-8 shadow-lg hover:shadow-2xl hover:-translate-y-1.5 transition-all duration-300 border border-slate-200 flex flex-col justify-between">
+          
+          <div>
+            <!-- Header Card with Pure SVG Icon -->
+            <div class="flex items-start justify-between gap-3 mb-3 sm:mb-4">
+              <div class="w-10 h-10 sm:w-12 sm:h-12 rounded-2xl bg-blue-50 text-[#1e2dfc] flex items-center justify-center shrink-0">
+                {item.iconType === 'wrench' && (
+                  <svg class="w-5 h-5 sm:w-6 sm:h-6 text-[#1e2dfc]" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z" />
+                  </svg>
+                )}
+                {item.iconType === 'cog' && (
+                  <svg class="w-5 h-5 sm:w-6 sm:h-6 text-[#1e2dfc]" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z" />
+                  </svg>
+                )}
+                {item.iconType === 'sparkle' && (
+                  <svg class="w-5 h-5 sm:w-6 sm:h-6 text-[#1e2dfc]" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z" />
+                  </svg>
+                )}
+                {item.iconType === 'snowflake' && (
+                  <svg class="w-5 h-5 sm:w-6 sm:h-6 text-[#1e2dfc]" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M12 2v20M2 12h20M4.93 4.93l14.14 14.14M19.07 4.93L4.93 19.07M9 3l3 3 3-3M9 21l3-3 3 3M3 9l3 3-3 3M21 9l-3 3 3 3" />
+                  </svg>
+                )}
+              </div>
+
+              <span class="text-[11px] sm:text-xs md:text-[13px] font-black uppercase tracking-wider text-[#1e2dfc]">
+                Include Jasa Vakum
+              </span>
+            </div>
+
+            <h3 class="text-lg sm:text-xl font-black uppercase tracking-tight text-slate-900 mb-1">
+              {item.name}
+            </h3>
+            <p class="text-xs font-bold text-[#1e2dfc] mb-3 sm:mb-4">
+              {item.subtitle}
+            </p>
+
+            <p class="text-xs sm:text-sm text-slate-600 leading-relaxed mb-4 sm:mb-6">
+              {item.desc}
+            </p>
+
+            <!-- Price -->
+            <div class="py-3 sm:py-4 px-4 sm:px-5 rounded-2xl bg-slate-50 border border-slate-200 mb-4 sm:mb-6">
+              <span class="text-[11px] sm:text-xs font-bold text-slate-500 block -mb-0.5">Biaya Paket:</span>
+              <div class="flex items-baseline gap-1">
+                <span class="text-xs font-bold text-slate-600">Rp</span>
+                <span class="text-2xl sm:text-3xl md:text-4xl font-black text-[#1e2dfc] tracking-tight">{item.price}</span>
+                <span class="text-[11px] sm:text-xs font-bold text-slate-500">/ paket</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Action Button -->
+          <a
+            href={`https://wa.me/6288219639143?text=Halo%20PT%20Family%20Teknik%20Paimin%20Groups,%20saya%20ingin%20layanan%20${encodeURIComponent(item.name)}`}
+            target="_blank"
+            rel="noopener noreferrer"
+            class="w-full py-2.5 sm:py-3 px-4 rounded-xl font-extrabold text-xs sm:text-sm uppercase tracking-wider flex items-center justify-center gap-2 bg-[#1e2dfc] hover:bg-[#1622c8] text-white shadow-md shadow-blue-500/30 transition-all duration-200"
+          >
+            Jadwalkan Pengerjaan
+          </a>
+
+        </div>
+      ))}
+    </div>
+
+    <!-- Catatan & SOP Pengerjaan Banner with SVG Icon -->
+    <div class="mt-8 sm:mt-12 md:mt-16 bg-white rounded-2xl sm:rounded-3xl p-5 sm:p-7 md:p-8 border border-amber-200 shadow-md flex flex-col sm:flex-row items-start sm:items-center gap-4 sm:gap-5">
+      <div class="w-10 h-10 sm:w-12 sm:h-12 rounded-2xl bg-amber-50 text-amber-600 flex items-center justify-center shrink-0 border border-amber-100">
+        <!-- Lightbulb / Info SVG Icon -->
+        <svg class="w-5 h-5 sm:w-6 sm:h-6 text-amber-500" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z" />
+        </svg>
+      </div>
+      <div class="space-y-1">
+        <h4 class="text-xs sm:text-sm md:text-base font-black uppercase tracking-wide text-slate-900">
+          Catatan & SOP Pemeriksaan Sebelum Pengerjaan:
+        </h4>
+        <p class="text-xs sm:text-sm text-slate-600 leading-relaxed">
+          Sebelum pekerjaan dimulai, kondisi AC akan kami cek terlebih dahulu. Apabila ditemukan kendala seperti <strong>AC tidak dingin, kekurangan freon, kebocoran pipa, atau kerusakan komponen lainnya</strong>, teknisi kami akan menginformasikan dan mengonfirmasi estimasi terlebih dahulu kepada customer sebelum dilakukan tindakan tambahan.
+        </p>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<script>
+  const tabCuciBtn = document.getElementById('tab-cuci-btn');
+  const tabJasaBtn = document.getElementById('tab-jasa-btn');
+  const cuciView = document.getElementById('cuci-view');
+  const jasaView = document.getElementById('jasa-view');
+
+  if (tabCuciBtn && tabJasaBtn && cuciView && jasaView) {
+    tabCuciBtn.addEventListener('click', () => {
+      // Show Cuci View
+      cuciView.classList.remove('hidden');
+      jasaView.classList.add('hidden');
+
+      // Style Tab
+      tabCuciBtn.className = 'price-tab-btn inline-flex items-center justify-center gap-2 px-5 sm:px-8 py-2.5 sm:py-3 rounded-xl font-black text-xs sm:text-sm uppercase tracking-wider transition-all duration-200 bg-[#1e2dfc] text-white shadow-md text-center';
+      tabJasaBtn.className = 'price-tab-btn inline-flex items-center justify-center gap-2 px-5 sm:px-8 py-2.5 sm:py-3 rounded-xl font-black text-xs sm:text-sm uppercase tracking-wider transition-all duration-200 text-slate-700 hover:text-slate-900 text-center';
+    });
+
+    tabJasaBtn.addEventListener('click', () => {
+      // Show Jasa View
+      jasaView.classList.remove('hidden');
+      cuciView.classList.add('hidden');
+
+      // Style Tab
+      tabJasaBtn.className = 'price-tab-btn inline-flex items-center justify-center gap-2 px-5 sm:px-8 py-2.5 sm:py-3 rounded-xl font-black text-xs sm:text-sm uppercase tracking-wider transition-all duration-200 bg-[#1e2dfc] text-white shadow-md text-center';
+      tabCuciBtn.className = 'price-tab-btn inline-flex items-center justify-center gap-2 px-5 sm:px-8 py-2.5 sm:py-3 rounded-xl font-black text-xs sm:text-sm uppercase tracking-wider transition-all duration-200 text-slate-700 hover:text-slate-900 text-center';
+    });
+  }
+</script>

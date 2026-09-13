@@ -1,0 +1,108 @@
+---
+const acProducts = [
+  {
+    id: "gree",
+    name: "GREE INVERTER",
+    image: "/assets/ac/gree.png",
+    price: "Mulai 3.4 Jt",
+    active: true
+  },
+  {
+    id: "daikin",
+    name: "DAIKIN INVERTER",
+    image: "/assets/ac/daikin.png",
+    price: "Mulai 4.2 Jt",
+    active: false
+  },
+  {
+    id: "midea",
+    name: "MIDEA PRO",
+    image: "/assets/ac/midea.png",
+    price: "Mulai 2.9 Jt",
+    active: false
+  },
+  {
+    id: "aqua",
+    name: "AQUA JAPAN",
+    image: "/assets/ac/aqua.png",
+    price: "Mulai 2.8 Jt",
+    active: false
+  }
+];
+---
+
+<!-- Horizontal Product Menu Bar matching the KFC reference (4 Brands Only) -->
+<section class="w-full bg-white relative z-20 shadow-xl border-b border-slate-200">
+  
+  <!-- Yellow Pill Badge at top center (Matching "MENUS" badge) -->
+  <div class="absolute -top-4 sm:-top-5 left-1/2 -translate-x-1/2 z-30">
+    <div class="px-5 sm:px-8 py-1.5 sm:py-2 rounded-full bg-[#f59e0b] hover:bg-[#d97706] text-white font-black uppercase tracking-widest text-[10px] sm:text-xs md:text-sm shadow-lg shadow-amber-500/30 flex items-center justify-center cursor-default select-none border-2 border-white whitespace-nowrap">
+      PILIHAN UNIT AC
+    </div>
+  </div>
+
+  <div class="max-w-6xl mx-auto px-3 sm:px-6 lg:px-8 pt-7 sm:pt-9 pb-4 sm:pb-6">
+    <!-- Centered 4 Brands Grid -->
+    <div class="grid grid-cols-2 sm:grid-cols-4 gap-3 sm:gap-6 md:gap-8 lg:gap-12 justify-center items-end">
+      {acProducts.map((item, idx) => (
+        <div
+          class={`product-menu-item flex flex-col items-center justify-end group cursor-pointer text-center select-none pb-1 sm:pb-2 relative transition-all duration-200 ${idx === 0 ? 'active-item' : ''}`}
+          data-brand-id={item.id}
+          data-index={idx}
+        >
+          <!-- Product Thumbnail Image -->
+          <div class="h-12 sm:h-16 md:h-20 w-24 sm:w-32 md:w-40 flex items-center justify-center mb-1.5 sm:mb-3">
+            <img
+              src={item.image}
+              alt={item.name}
+              class="max-h-full max-w-full object-contain drop-shadow-md group-hover:scale-110 transition-transform duration-300 pointer-events-none"
+              loading="lazy"
+            />
+          </div>
+
+          <!-- Product Title -->
+          <span class="text-[11px] sm:text-xs md:text-[13px] font-extrabold uppercase tracking-wider text-slate-800 group-hover:text-[#1e2dfc] transition-colors truncate max-w-full">
+            {item.name}
+          </span>
+
+          <!-- Price subtext -->
+          <span class="text-[10px] sm:text-[11px] font-semibold text-slate-500 group-hover:text-slate-700 truncate max-w-full mt-0.5">
+            {item.price}
+          </span>
+
+          <!-- Active Underline Indicator Bar -->
+          <span class={`active-bar h-[3px] sm:h-[3.5px] w-12 sm:w-16 md:w-20 rounded-full mt-1.5 sm:mt-2 transition-all duration-300 ${idx === 0 ? 'bg-[#1e2dfc] opacity-100' : 'bg-transparent opacity-0 group-hover:bg-[#1e2dfc]/40 group-hover:opacity-100'}`}></span>
+        </div>
+      ))}
+    </div>
+  </div>
+
+</section>
+
+<script>
+  const items = document.querySelectorAll('.product-menu-item');
+
+  items.forEach((item, index) => {
+    item.addEventListener('click', () => {
+      // Update local active underline bar
+      items.forEach(i => {
+        const bar = i.querySelector('.active-bar');
+        if (bar) {
+          bar.classList.remove('bg-[#1e2dfc]', 'opacity-100');
+          bar.classList.add('bg-transparent', 'opacity-0');
+        }
+      });
+      const activeBar = item.querySelector('.active-bar');
+      if (activeBar) {
+        activeBar.classList.add('bg-[#1e2dfc]', 'opacity-100');
+        activeBar.classList.remove('bg-transparent', 'opacity-0');
+      }
+
+      // Trigger top hero slide synchronization if available
+      const brandTabs = document.querySelectorAll('.ac-brand-tab');
+      if (brandTabs[index]) {
+        (brandTabs[index] as HTMLElement).click();
+      }
+    });
+  });
+</script>

@@ -1,11 +1,24 @@
 ---
 import Layout from '../layouts/Layout.astro';
 import Header from '../components/Header.astro';
+import ProductMenuBar from '../components/ProductMenuBar.astro';
+import PromoCardsGrid from '../components/PromoCardsGrid.astro';
+import PriceList from '../components/PriceList.astro';
+import SocialBanner from '../components/SocialBanner.astro';
+import Footer from '../components/Footer.astro';
+import FloatingWhatsApp from '../components/FloatingWhatsApp.astro';
+
+const acBrands = [
+  { id: 'gree', name: 'GREE', image: '/assets/ac/gree.png', badge: '100', priceSub: 'rb', label: 'Cuci AC Inverter', tag: 'Eco Cold' },
+  { id: 'daikin', name: 'DAIKIN', image: '/assets/ac/daikin.png', badge: '100', priceSub: 'rb', label: 'Cuci AC & Servis', tag: 'Smart Inverter' },
+  { id: 'midea', name: 'MIDEA', image: '/assets/ac/midea.png', badge: '100', priceSub: 'rb', label: 'Cuci AC Bersih', tag: 'Fast Cooling' },
+  { id: 'aqua', name: 'AQUA', image: '/assets/ac/aqua.png', badge: '100', priceSub: 'rb', label: 'Cuci AC Berkala', tag: 'Fresh Air' }
+];
 ---
 
-<Layout title="AC FAMILY | Company Profile">
-  <!-- Full Width Background Canvas in #1e2dfc Blue -->
-  <div class="w-full min-h-screen bg-[#1e2dfc] relative overflow-hidden flex flex-col justify-between">
+<Layout title="PT Family Teknik Paimin Groups | Servis & Cuci AC Jabodetabek">
+  <!-- Top Hero Section in #1e2dfc Blue -->
+  <div class="w-full min-h-[580px] lg:min-h-[640px] bg-[#1e2dfc] relative overflow-hidden flex flex-col justify-between">
     
     <!-- Background Ambient Decorative Watermark Rings across the full screen -->
     <div class="absolute inset-0 pointer-events-none overflow-hidden select-none">
@@ -24,28 +37,248 @@ import Header from '../components/Header.astro';
       <Header />
     </div>
 
-    <!-- Main Hero Body Area (Vertically Centered) -->
-    <main class="flex-grow w-full max-w-[1440px] mx-auto px-6 sm:px-10 lg:px-16 relative z-10 flex items-center py-10 lg:py-16">
-      <div class="w-full grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+    <!-- Main Hero Body Area (Aligned & Balanced across Mobile, Tablet, Desktop) -->
+    <main class="flex-grow w-full max-w-[1440px] mx-auto px-4 sm:px-8 lg:px-16 relative z-10 flex items-center py-6 sm:py-10 md:py-12 lg:py-14">
+      <div class="w-full grid grid-cols-1 lg:grid-cols-12 gap-8 sm:gap-10 lg:gap-6 items-center">
         
-        <!-- Left Column: Big Headline -->
-        <div class="lg:col-span-7 space-y-6 text-left">
-          <h1 class="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-black uppercase tracking-tight text-white leading-[1.08] drop-shadow-sm font-sans max-w-2xl">
+        <!-- Left Column: Big Headline + Description + CTA Button + Pagination -->
+        <div class="lg:col-span-6 space-y-4 sm:space-y-5 text-center lg:text-left flex flex-col items-center lg:items-start z-20">
+          
+          <h1 class="text-3xl sm:text-5xl md:text-6xl lg:text-[64px] xl:text-[68px] font-black uppercase tracking-tight text-white leading-[1.1] sm:leading-[1.05] drop-shadow-sm font-sans max-w-xl">
             Cepat Datang,<br />
             Dingin Kembali
           </h1>
+          
+          <p class="text-xs sm:text-sm md:text-base text-white/85 max-w-md leading-relaxed font-normal pt-0.5">
+            Layanan panggilan cepat & bergaransi untuk cuci AC, perbaikan mesin pendingin, isi freon presisi, hingga bongkar pasang unit hunian & kantor.
+          </p>
+
+          <!-- CTA Pill Button matching reference image -->
+          <div class="pt-2 sm:pt-4 w-full sm:w-auto">
+            <a
+              href="https://wa.me/6288219639143?text=Halo%20PT%20Family%20Teknik%20Paimin%20Groups,%20saya%20ingin%20konsultasi%20layanan%20cuci%20AC"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="w-full sm:w-auto inline-flex items-center justify-center px-7 sm:px-10 py-3.5 sm:py-4 rounded-full border-2 border-white/90 text-white font-extrabold uppercase tracking-widest text-xs sm:text-sm hover:bg-white hover:text-[#1e2dfc] shadow-lg shadow-blue-950/20 active:scale-95 transition-all duration-300 select-none"
+            >
+              KONSULTASI SEKARANG
+            </a>
+          </div>
+
+          <!-- Bottom Pagination Indicators (Auto Sync with active slide) -->
+          <div id="pagination-dots" class="pt-3 sm:pt-6 md:pt-8 flex items-center justify-center lg:justify-start gap-2 select-none">
+            {acBrands.map((_, idx) => (
+              <button
+                type="button"
+                data-dot-idx={idx}
+                aria-label={`Slide ${idx + 1}`}
+                class={`pagination-dot transition-all duration-300 ${idx === 0 ? 'w-7 h-1.5 rounded-full bg-white' : 'w-2 h-2 rounded-full bg-white/40 hover:bg-white/70'}`}
+              ></button>
+            ))}
+          </div>
+
         </div>
 
-        <!-- Right Column: Space for Hero Product/Showcase (Ready for next step) -->
-        <div class="lg:col-span-5 relative flex items-center justify-center">
-          <!-- Area visual di kanan -->
+        <!-- Right Column: AC Unit Visual Composition with Static Snowflakes -->
+        <div class="lg:col-span-6 relative flex items-center justify-center pt-2 sm:pt-4 lg:pt-0">
+          
+          <div class="relative w-full max-w-xs sm:max-w-md lg:max-w-xl flex flex-col items-center">
+            
+            <!-- Snowflake 1 (Top Left Static) -->
+            <div class="absolute -top-5 sm:-top-6 left-1 sm:left-6 z-20 select-none pointer-events-none">
+              <svg class="w-6 h-6 sm:w-9 sm:h-9 text-white/90 drop-shadow-lg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M12 2v20M2 12h20M4.93 4.93l14.14 14.14M19.07 4.93L4.93 19.07M9 3l3 3 3-3M9 21l3-3 3 3M3 9l3 3-3 3M21 9l-3 3 3 3" />
+              </svg>
+            </div>
+
+            <!-- Snowflake 2 (Bottom Right Static) -->
+            <div class="absolute bottom-12 sm:bottom-14 right-1 sm:right-6 z-20 select-none pointer-events-none">
+              <svg class="w-5 h-5 sm:w-8 sm:h-8 text-white/85 drop-shadow-lg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M12 2v20M2 12h20M4.93 4.93l14.14 14.14M19.07 4.93L4.93 19.07M9 3l3 3 3-3M9 21l3-3 3 3M3 9l3 3-3 3M21 9l-3 3 3 3" />
+              </svg>
+            </div>
+
+            <!-- Snowflake 3 (Middle Bottom Subtle Static) -->
+            <div class="absolute -bottom-3 left-1/4 z-20 hidden sm:block select-none pointer-events-none">
+              <svg class="w-5 h-5 sm:w-6 sm:h-6 text-white/70 drop-shadow-md" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M12 2v20M2 12h20M4.93 4.93l14.14 14.14M19.07 4.93L4.93 19.07M9 3l3 3 3-3M9 21l3-3 3 3M3 9l3 3-3 3M21 9l-3 3 3 3" />
+              </svg>
+            </div>
+
+            <!-- Main AC Unit Display with Smooth Horizontal Slide Transition -->
+            <div class="relative z-10 w-full py-2 sm:py-4 overflow-hidden flex items-center justify-center min-h-[170px] sm:min-h-[220px] md:min-h-[280px]">
+              
+              <div id="ac-slide-container" class="relative w-full flex items-center justify-center transition-all duration-500 ease-out transform translate-x-0 opacity-100">
+                <img
+                  id="main-ac-img"
+                  src="/assets/ac/gree.png"
+                  alt="Unit AC Family Teknik"
+                  class="w-full h-auto max-h-[160px] sm:max-h-[220px] md:max-h-[280px] object-contain drop-shadow-[0_20px_25px_rgba(0,0,0,0.38)] select-none pointer-events-none"
+                  loading="eager"
+                />
+
+                <!-- Subtle Cold Air Glow Below AC -->
+                <div class="absolute -bottom-4 left-1/2 -translate-x-1/2 w-4/5 h-8 bg-gradient-to-b from-white/20 to-transparent blur-md rounded-full pointer-events-none"></div>
+              </div>
+
+            </div>
+
+            <!-- Floating White Price / Promo Badge: Mulai 100 rb Cuci AC -->
+            <div class="absolute -top-2 right-0 sm:right-4 md:right-6 z-30 w-18 h-18 sm:w-24 sm:h-24 md:w-28 md:h-28 rounded-full bg-white text-slate-900 shadow-2xl flex flex-col items-center justify-center p-1 sm:p-2 transform rotate-[8deg] hover:rotate-0 transition-transform duration-300 border-2 border-white select-none">
+              <span class="text-[8px] sm:text-[10px] md:text-[11px] font-bold uppercase tracking-wider text-slate-500 -mb-0.5 sm:-mb-1">Mulai</span>
+              <div class="flex items-start justify-center font-black leading-none text-[#1e2dfc]">
+                <span id="badge-price" class="text-lg sm:text-2xl md:text-3xl">100</span>
+                <span class="text-[9px] sm:text-xs md:text-sm ml-0.5 mt-0.5 text-slate-700">rb</span>
+              </div>
+              <span id="badge-label" class="text-[7px] sm:text-[9px] md:text-[10px] font-bold text-slate-600 text-center leading-tight mt-0.5 sm:mt-1">Cuci AC</span>
+            </div>
+
+            <!-- Interactive Brand Selector Pills (Gree, Daikin, Midea, Aqua) -->
+            <div class="mt-3 sm:mt-6 z-20 flex items-center justify-center gap-1 sm:gap-2.5 flex-wrap bg-white/10 backdrop-blur-md p-1 sm:p-2 rounded-full border border-white/20 max-w-full">
+              {acBrands.map((brand, idx) => (
+                <button
+                  type="button"
+                  data-brand-idx={idx}
+                  data-brand={brand.id}
+                  data-image={brand.image}
+                  data-price={brand.badge}
+                  data-label={brand.label}
+                  class={`ac-brand-tab px-2.5 sm:px-4 py-1 sm:py-1.5 rounded-full text-[9px] sm:text-xs font-bold uppercase tracking-wider transition-all duration-300 ${idx === 0 ? 'bg-white text-[#1e2dfc] shadow-md' : 'text-white/80 hover:text-white hover:bg-white/15'}`}
+                >
+                  {brand.name}
+                </button>
+              ))}
+            </div>
+
+          </div>
+
         </div>
 
       </div>
     </main>
 
-    <!-- Bottom Margin / Footer Spacer -->
-    <div class="relative z-10 h-8"></div>
+    <!-- Bottom Spacing -->
+    <div class="relative z-10 h-4 sm:h-6"></div>
 
   </div>
+
+  <!-- Bottom Section: Horizontal AC Product Menu Bar (Matching reference) -->
+  <ProductMenuBar />
+
+  <!-- Promo & Service Features Cards Grid (Matching reference 5-card grid) -->
+  <PromoCardsGrid />
+
+  <!-- Official Price List Section Family Teknik -->
+  <PriceList />
+
+  <!-- Social & Flyer Media Showcase Banner (#061f69 Background) -->
+  <SocialBanner />
+
+  <!-- Footer Section -->
+  <Footer />
+
+  <!-- Floating WhatsApp & Contact Widget -->
+  <FloatingWhatsApp />
+
 </Layout>
+
+<script>
+  // Data AC Brands for Auto-Slide
+  const brandsData = [
+    { name: 'GREE', image: '/assets/ac/gree.png', price: '100', label: 'Cuci AC Inverter' },
+    { name: 'DAIKIN', image: '/assets/ac/daikin.png', price: '100', label: 'Cuci AC & Servis' },
+    { name: 'MIDEA', image: '/assets/ac/midea.png', price: '100', label: 'Cuci AC Bersih' },
+    { name: 'AQUA', image: '/assets/ac/aqua.png', price: '100', label: 'Cuci AC Berkala' }
+  ];
+
+  let currentIndex = 0;
+  let autoSlideTimer: number | null = null;
+
+  const slideContainer = document.getElementById('ac-slide-container');
+  const mainImg = document.getElementById('main-ac-img') as HTMLImageElement;
+  const badgePrice = document.getElementById('badge-price');
+  const badgeLabel = document.getElementById('badge-label');
+  const brandTabs = document.querySelectorAll('.ac-brand-tab');
+  const dotElements = document.querySelectorAll('.pagination-dot');
+
+  function goToSlide(index: number, direction: 'right' | 'left' = 'right') {
+    currentIndex = index;
+    const currentData = brandsData[currentIndex];
+
+    // Update Brand Pills Tab UI
+    brandTabs.forEach((tab, idx) => {
+      if (idx === currentIndex) {
+        tab.classList.add('bg-white', 'text-[#1e2dfc]', 'shadow-md');
+        tab.classList.remove('text-white/80', 'hover:text-white', 'hover:bg-white/15');
+      } else {
+        tab.classList.remove('bg-white', 'text-[#1e2dfc]', 'shadow-md');
+        tab.classList.add('text-white/80', 'hover:text-white', 'hover:bg-white/15');
+      }
+    });
+
+    // Update Pagination Dots UI
+    dotElements.forEach((dot, idx) => {
+      if (idx === currentIndex) {
+        dot.className = 'pagination-dot transition-all duration-300 w-7 h-1.5 rounded-full bg-white';
+      } else {
+        dot.className = 'pagination-dot transition-all duration-300 w-2 h-2 rounded-full bg-white/40 hover:bg-white/70';
+      }
+    });
+
+    // Smooth horizontal slide animation
+    if (slideContainer && mainImg) {
+      slideContainer.style.opacity = '0';
+      slideContainer.style.transform = direction === 'right' ? 'translateX(30px)' : 'translateX(-30px)';
+
+      setTimeout(() => {
+        mainImg.src = currentData.image;
+        if (badgePrice) badgePrice.textContent = currentData.price;
+        if (badgeLabel) badgeLabel.textContent = currentData.label;
+
+        slideContainer.style.transform = direction === 'right' ? 'translateX(-30px)' : 'translateX(30px)';
+        
+        // Force reflow and animate to center
+        setTimeout(() => {
+          slideContainer.style.opacity = '1';
+          slideContainer.style.transform = 'translateX(0)';
+        }, 30);
+      }, 200);
+    }
+  }
+
+  function nextSlide() {
+    const nextIdx = (currentIndex + 1) % brandsData.length;
+    goToSlide(nextIdx, 'right');
+  }
+
+  function startAutoSlide() {
+    stopAutoSlide();
+    autoSlideTimer = window.setInterval(nextSlide, 3500);
+  }
+
+  function stopAutoSlide() {
+    if (autoSlideTimer) {
+      clearInterval(autoSlideTimer);
+      autoSlideTimer = null;
+    }
+  }
+
+  // Click handler for Brand Tabs
+  brandTabs.forEach((tab, idx) => {
+    tab.addEventListener('click', () => {
+      goToSlide(idx);
+      startAutoSlide(); // Reset auto timer
+    });
+  });
+
+  // Click handler for Pagination Dots
+  dotElements.forEach((dot, idx) => {
+    dot.addEventListener('click', () => {
+      goToSlide(idx);
+      startAutoSlide(); // Reset auto timer
+    });
+  });
+
+  // Initialize auto-play
+  startAutoSlide();
+</script>
