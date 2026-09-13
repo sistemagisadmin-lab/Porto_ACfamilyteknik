@@ -4,12 +4,130 @@ import '../styles/global.css';
 interface Props {
   title?: string;
   description?: string;
+  keywords?: string;
+  image?: string;
+  canonicalURL?: string;
 }
 
 const {
-  title = "AC Family Teknik | Company Profile",
-  description = "Solusi tata udara & pendingin ruangan profesional."
+  title = "PT Family Teknik Paimin Groups | Servis & Cuci AC Jabodetabek Bergaransi",
+  description = "Jasa servis AC, cuci AC, isi freon presisi, perbaikan AC bocor/rusak, dan bongkar pasang unit AC panggilan cepat & bergaransi resmi se-Jabodetabek (Rumah, Kantor, Apartemen).",
+  keywords = "servis ac jabodetabek, cuci ac jakarta, cuci ac bogor, cuci ac depok, cuci ac tangerang, cuci ac bekasi, servis ac panggilan, isi freon ac, bongkar pasang ac, overhaul ac, pt family teknik paimin groups, jasa service ac terdekat, teknisi ac bersertifikat",
+  image = "/assets/flayer2.jpg",
+  canonicalURL = "https://familyteknikac.com",
 } = Astro.props;
+
+// Schema.org Structured Data for LocalBusiness & HVAC Service
+const schemaData = {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "HVACBusiness",
+      "@id": `${canonicalURL}/#organization`,
+      "name": "PT Family Teknik Paimin Groups",
+      "alternateName": "AC Family Teknik Jabodetabek",
+      "url": canonicalURL,
+      "logo": `${canonicalURL}/assets/logo.png`,
+      "image": `${canonicalURL}${image}`,
+      "description": description,
+      "telephone": "+6288219639143",
+      "priceRange": "Rp 75.000 - Rp 750.000",
+      "currenciesAccepted": "IDR",
+      "paymentAccepted": "Cash, Bank Transfer, QRIS",
+      "areaServed": [
+        { "@type": "City", "name": "Jakarta" },
+        { "@type": "City", "name": "Jakarta Pusat" },
+        { "@type": "City", "name": "Jakarta Selatan" },
+        { "@type": "City", "name": "Jakarta Barat" },
+        { "@type": "City", "name": "Jakarta Timur" },
+        { "@type": "City", "name": "Jakarta Utara" },
+        { "@type": "City", "name": "Bogor" },
+        { "@type": "City", "name": "Depok" },
+        { "@type": "City", "name": "Tangerang" },
+        { "@type": "City", "name": "Tangerang Selatan" },
+        { "@type": "City", "name": "Bekasi" }
+      ],
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "Jakarta",
+        "addressRegion": "DKI Jakarta",
+        "addressCountry": "ID"
+      },
+      "geo": {
+        "@type": "GeoCoordinates",
+        "latitude": -6.2088,
+        "longitude": 106.8456
+      },
+      "openingHoursSpecification": [
+        {
+          "@type": "OpeningHoursSpecification",
+          "dayOfWeek": [
+            "Monday",
+            "Tuesday",
+            "Wednesday",
+            "Thursday",
+            "Friday",
+            "Saturday",
+            "Sunday"
+          ],
+          "opens": "07:30",
+          "closes": "20:00"
+        }
+      ],
+      "sameAs": [
+        "https://www.instagram.com/acservice.jabodetabek/",
+        "https://wa.me/6288219639143",
+        "https://wa.me/6285695410841"
+      ],
+      "hasOfferCatalog": {
+        "@type": "OfferCatalog",
+        "name": "Layanan Servis & Cuci AC PT Family Teknik",
+        "itemListElement": [
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "Cuci / Cleaning AC Split 1 PK",
+              "description": "Cleaning indoor & outdoor, pembersihan saluran drainase, pengecekan tekanan & kelistrikan bergaransi."
+            },
+            "price": "100000",
+            "priceCurrency": "IDR"
+          },
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "Bongkar Pasang AC (1/2 PK - 1 PK) Include Jasa Vakum",
+              "description": "Bongkar pasang unit AC split lengkap dengan prosedur vakum pipa digital manifold."
+            },
+            "price": "600000",
+            "priceCurrency": "IDR"
+          },
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "Overhaul AC Split Deep Cleaning Include Vakum",
+              "description": "Turun unit total untuk pembersihan kerak membandel, lendir evaporator, karat talang air."
+            },
+            "price": "550000",
+            "priceCurrency": "IDR"
+          },
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "Pengisian & Tambah Freon R32 / R410A Murni",
+              "description": "Isi freon presisi dengan pengetesan manifold kompresor."
+            },
+            "price": "75000",
+            "priceCurrency": "IDR"
+          }
+        ]
+      }
+    }
+  ]
+};
 ---
 
 <!doctype html>
@@ -17,17 +135,54 @@ const {
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="generator" content={Astro.generator} />
+    
+    <!-- Primary Meta Tags -->
+    <title>{title}</title>
+    <meta name="title" content={title} />
+    <meta name="description" content={description} />
+    <meta name="keywords" content={keywords} />
+    <meta name="author" content="PT Family Teknik Paimin Groups" />
+    <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
+    <meta name="language" content="Indonesian" />
+    <meta name="theme-color" content="#1e2dfc" />
+    <link rel="canonical" href={canonicalURL} />
+
+    <!-- Geo-Targeting & Local SEO Meta Tags (Jabodetabek, Indonesia) -->
+    <meta name="geo.region" content="ID-JK" />
+    <meta name="geo.placename" content="Jakarta, Bogor, Depok, Tangerang, Bekasi, Jabodetabek" />
+    <meta name="geo.position" content="-6.2088;106.8456" />
+    <meta name="ICBM" content="-6.2088, 106.8456" />
+    <meta name="DC.title" content="PT Family Teknik Paimin Groups" />
+
+    <!-- Open Graph / Facebook / WhatsApp -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content={canonicalURL} />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:image" content={image} />
+    <meta property="og:site_name" content="PT Family Teknik Paimin Groups" />
+    <meta property="og:locale" content="id_ID" />
+
+    <!-- Twitter Cards -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:url" content={canonicalURL} />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={image} />
+
+    <!-- Favicon & Touch Icons -->
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="icon" type="image/x-icon" href="/favicon.ico" />
+    <link rel="apple-touch-icon" href="/assets/logo.png" />
     
     <!-- Google Fonts: Plus Jakarta Sans -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,700;1,900&display=swap" rel="stylesheet" />
 
-    <title>{title}</title>
-    <meta name="title" content={title} />
-    <meta name="description" content={description} />
+    <!-- Schema.org JSON-LD Structured Data for Google Rich Results & Local Pack -->
+    <script type="application/ld+json" set:html={JSON.stringify(schemaData)} />
   </head>
   <body class="bg-[#1e2dfc] text-white min-h-screen m-0 p-0 antialiased selection:bg-white selection:text-[#1e2dfc] overflow-x-hidden">
     <slot />

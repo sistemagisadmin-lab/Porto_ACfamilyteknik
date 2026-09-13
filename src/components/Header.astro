@@ -30,7 +30,7 @@ const navLinks = [
     <div class="flex items-center gap-3 sm:gap-6 md:gap-8 lg:gap-10">
       
       <!-- Navigation Links (Uppercase, clean tracking on desktop) -->
-      <nav class="hidden md:flex items-center gap-6 lg:gap-9">
+      <nav class="hidden md:flex items-center gap-5 lg:gap-8">
         {navLinks.map((link) => (
           <a
             href={link.href}
@@ -40,6 +40,23 @@ const navLinks = [
           </a>
         ))}
       </nav>
+
+      <!-- Build by Sistemagis Header Badge (Visible across Desktop, Tablet & Mobile) -->
+      <a
+        href="https://www.tiktok.com/@sistemagis"
+        target="_blank"
+        rel="noopener noreferrer"
+        title="Build by Sistemagis"
+        class="inline-flex items-center gap-1 sm:gap-1.5 px-2.5 sm:px-3 py-1 sm:py-1.5 rounded-full bg-white/10 hover:bg-white/20 border border-white/25 text-white transition-all backdrop-blur-md group hover:scale-105 active:scale-95 select-none shadow-sm"
+      >
+        <span class="text-[9px] sm:text-[10px] font-bold text-white/90 uppercase tracking-wider group-hover:text-white whitespace-nowrap">Build by</span>
+        <img
+          src="/assets/sistemagis.png"
+          alt="Sistemagis Logo"
+          class="h-3 sm:h-3.5 w-auto object-contain transition-transform group-hover:scale-105 brightness-110"
+          loading="eager"
+        />
+      </a>
 
       <!-- Action Icons (Instagram + WhatsApp Quick Buttons) -->
       <div class="flex items-center gap-2.5 sm:gap-3">
@@ -102,6 +119,8 @@ const navLinks = [
         {link.name}
       </a>
     ))}
+    
+    <!-- Mobile WhatsApp Buttons -->
     <div class="pt-2 flex flex-col sm:flex-row items-stretch sm:items-center gap-2">
       <a
         href="https://wa.me/6288219639143"
@@ -118,6 +137,23 @@ const navLinks = [
         class="text-xs font-black uppercase text-center bg-emerald-600 hover:bg-emerald-700 text-white px-4 py-2.5 rounded-xl shadow-md transition-colors"
       >
         WhatsApp Admin 2
+      </a>
+    </div>
+
+    <!-- Mobile Built by Sistemagis link -->
+    <div class="pt-2 border-t border-white/15 flex items-center justify-center">
+      <a
+        href="https://www.tiktok.com/@sistemagis"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-white/10 text-white text-xs font-medium hover:bg-white/20 transition-colors"
+      >
+        <span class="text-[11px] text-white/80">Build by</span>
+        <img
+          src="/assets/sistemagis.png"
+          alt="Sistemagis"
+          class="h-3.5 w-auto object-contain"
+        />
       </a>
     </div>
   </div>
